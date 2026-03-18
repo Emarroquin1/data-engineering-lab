@@ -13,7 +13,7 @@ logging.basicConfig(
 logging.info("Iniciando carga de productos a SQLite")
 
 input_path = "data/processed/api_practice/products_processed.csv"
-db_path = "data/products.db"
+db_path = "data/bd/api_practice/products.db"
 
 # validar existencia archivo
 if not os.path.exists(input_path):
