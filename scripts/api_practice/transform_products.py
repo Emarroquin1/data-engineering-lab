@@ -9,8 +9,8 @@ logging.basicConfig(
 
 logging.info("Iniciando transformación de productos")
 
-input_path = "data/raw/products.csv"
-output_path = "data/processed/products_processed.csv"
+input_path = "data/raw/api_practice/products.csv"
+output_path = "data/processed/api_practice/products_processed.csv"
 
 # Verificar que exista el archivo de entrada
 if not os.path.exists(input_path):
@@ -72,7 +72,7 @@ df["discount_value"] = df["discount_value"].round(2)
 df["final_price"] = df["final_price"].round(2)
 
 # Crear carpeta de salida si no existe
-os.makedirs("data/processed", exist_ok=True)
+os.makedirs("data/processed/api_practice", exist_ok=True)
 
 # Guardar archivo transformado
 df.to_csv(output_path, index=False)

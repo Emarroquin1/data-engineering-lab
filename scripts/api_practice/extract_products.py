@@ -23,5 +23,5 @@ productos = data.get('products', [])
 df = pd.DataFrame(productos)
 #guardar el archivo csv en la carpeta data/raw con el nombre products.csv
 #index=False es para que no se guarde el indice del dataframe en el archivo excel
-df.to_csv('data/raw/products.csv', index=False)
+df.to_csv('data/raw/api_practice/products.csv', index=False)
 logging.info("Archivo products.csv creado exitosamente")
