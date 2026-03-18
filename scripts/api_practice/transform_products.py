@@ -74,6 +74,11 @@ df["final_price"] = df["final_price"].round(2)
 # Crear carpeta de salida si no existe
 os.makedirs("data/processed/api_practice", exist_ok=True)
 
+# Eliminar archivo de salida previo para guardar data nueva
+if os.path.exists(output_path):
+    os.remove(output_path)
+    logging.info(f"Archivo existente eliminado: {output_path}")
+
 # Guardar archivo transformado
 df.to_csv(output_path, index=False)
 

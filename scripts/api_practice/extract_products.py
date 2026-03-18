@@ -1,6 +1,7 @@
 import requests
 import logging
 import pandas as pd
+import os
 
 # configurar logs
 logging.basicConfig(
@@ -9,6 +10,8 @@ logging.basicConfig(
 )
 
 logging.info("Iniciando proceso de extraccion para dummyjson")
+
+output_path = "data/raw/api_practice/products.csv"
 
 url = "https://dummyjson.com/products"
 response = requests.get(url)
@@ -23,5 +26,10 @@ productos = data.get('products', [])
 df = pd.DataFrame(productos)
 #guardar el archivo csv en la carpeta data/raw con el nombre products.csv
 #index=False es para que no se guarde el indice del dataframe en el archivo excel
-df.to_csv('data/raw/api_practice/products.csv', index=False)
+os.makedirs("data/raw/api_practice", exist_ok=True)
+if os.path.exists(output_path):
+    os.remove(output_path)
+    logging.info(f"Archivo existente eliminado: {output_path}")
+
+df.to_csv(output_path, index=False)
 logging.info("Archivo products.csv creado exitosamente")
